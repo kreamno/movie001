@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "movie_ref.h"
-#include "linkedList_ref.h"
+#include "linkedList.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -20,6 +19,9 @@ int main(int argc, char *argv[]) {
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
 	int cnt; //integer variable
+	
+	int count = 0;
+	char* ptr = NULL;
 	
 	//1. reading the movie.dat-----------------------------
 	fp = fopen("C:\code\project2\movie\movie\movie.dat", "r");	//1.1 FILE open
@@ -57,19 +59,24 @@ int main(int argc, char *argv[]) {
 				printf("\nprinting specific country movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
 				
-				
+				repFunc = mv_printCountry;
+				arg = NULL;
 				break;
 				
 			case 3: //print movies with long runtime
 				printf("\nprinting long runtime movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
 				
+				repFunc = mv_printRunTime;
+				arg = NULL;
 				break;
 				
 			case 4: //print movies with high score
 				printf("\nprinting high score movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
 				
+				repFunc = mv_printScore;
+				arg = NULL;
 				break;
 				
 			case 5:
@@ -84,7 +91,7 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		//2.3 print number of movies
+		printf("NUMBER OF MOVIES: %d",);	//2.3 print number of movies
 	}
 	
 	return 0;

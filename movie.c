@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "movie_ref.h"
 
 //structure definition
 typedef struct movInfo {
@@ -17,11 +16,15 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	
 	//allocate memory and set the member variables
 	mvPtr = (movInfo_t*)malloc(500*sizeof(movInfo_t));
+	if(mvPtr == NULL){
+		printf("!!ERROR!!\n");
+		return NULL;
+	}
 	
-	mvPtr.name = name;
-	mvPtr.score = score;
-	mvPtr.runTime = runTime;
-	mvPtr.madeIn = country;
+	strcpy(mvPtr->name, name); 
+	strcpy(mvPtr->madeIn, country);
+	mvPtr->runTime = runTime;
+	mvPtr->score = score;
 	
 	free(mvPtr);
 	
