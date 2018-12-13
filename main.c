@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "linkedList.h"
+#include "linkedList_ref.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -27,13 +27,17 @@ int main(int argc, char *argv[]) {
 	fp = fopen("C:\code\project2\movie\movie\movie.dat", "r");	//1.1 FILE open
 	
 	//1.2 list generation (use function list_genList() )
-	list = list_genList();
+	list = list_genList(void);
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/ )
+	while ( fgets(char* list, int n, FILE *fp) )
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+		mv_genMvInfo(name, score, runTime, country);
+		repFunc = mv_genMvInfo;
+		
 		list_addTail(mvInfo, list);
+	
 	}
 
 	//1.4 FILE close
